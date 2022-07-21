@@ -1,0 +1,81 @@
+<!doctype html>
+<html class="no-js" lang="">
+	{% load crispy_forms_tags %}
+<head>
+	
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>EasyLife | Admin_Login </title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+    <link href ="{% static 'css/admin.css' %}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+    <br><br><br>
+    <div class="container h-100">
+		<div class="row h-100 justify-content-center align-items-center">
+			<div class="card">
+				<h4 class="card-header">Login</h4>
+				<div class="card-body">
+                    {%if messages%}
+                    {% for msg in messages%}
+                    <div class="alert alert-danger" role="alert">
+						{{ msg }}
+					</div>
+                    
+                    {% endfor%}
+                    {% endif%}
+					
+					<form data-toggle="validator" role="form" method="POST" action="#">
+                        {% csrf_token %}
+						<input type="hidden" class="hide" id="csrf_token" name="csrf_token" value="C8nPqbqTxzcML7Hw0jLRu41ry5b9a10a0e2bc2">
+						<div class="row">
+							<div class="col-md-12">
+                                
+								<div class="form-group">
+									<label>Email </label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="fa fa-envelope-open-o" aria-hidden="true"></i></span>
+										</div>
+										<input type="email" class="form-control" name="email"  pattern=".{4,}"  required="">
+									</div>
+									<div class="help-block with-errors text-danger"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>Password</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+										</div>
+										<input type="password" name="mdp" class="form-control"  required="">
+									</div>
+									<div class="help-block with-errors text-danger"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								<input type="hidden" name="redirect" value="">
+								<input type="submit" class="btn btn-primary btn-lg btn-block" value="Login" name="submit">
+							</div>
+						</div>
+					</form>
+					<div class="clear"></div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</body>
+</html>

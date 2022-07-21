@@ -1,0 +1,112 @@
+{%if request.session.email%}
+{% csrf_token %}
+<!doctype html>
+<html class="no-js" lang="">
+	{% load crispy_forms_tags %}
+
+    <head>
+        <meta charset="UTF-8">
+        {% load static %}
+        <title>
+            {% block title %} {% endblock %}
+        </title>
+    
+        {% block stylesheet %}{% endblock %}
+        <link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css"
+rel="stylesheet"
+/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    </head>
+    
+    
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container-fluid">
+<a class="navbar-brand"href="{%url 'welcome_admin' %}">EasyLife</a>
+<a class="navbar-brand"href="#">|</a>
+<button class="navbar-toggler"type="button"data-bs-toggle="collapse"data-bs-target="#navbarColor02"aria-controls="navbarColor02"aria-expanded="false"aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+ 
+<div class="collapse navbar-collapse"id="navbarColor02">
+<ul class="navbar-nav me-auto">
+<li class="nav-item">
+<a class="nav-link" href="{%url 'welcome_admin' %}">Techniciens
+<span class="visually-hidden">(current)</span>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link"href="{%url 'client' %}">Clients</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link"href="{%url 'offre' %}">Offres</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"href="{%url 'contact_admin' %}">Contacts </a>
+        </li>
+    
+
+</ul>
+<a href="{%url 'logout_admin'%}" style="color: grey;">Logout</a>
+</div>
+</div>
+</nav>
+
+
+          <body>
+        {% block content %}
+        {%endblock%}
+        <script src="{% static 'js/tec.js' %}"></script>
+            
+            
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+            <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+             
+            <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+            
+                   
+                {% block javascripts %}{% endblock %}
+</body>
+
+
+    
+</html>
+{% else %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+{% load static %}
+
+<!------ Include the above in your HEAD tag ---------->
+<link href="{%static 'error.css'%}">
+<div class="page-wrap d-flex flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <br><br><br><br>
+                <span class="display-1 d-block">404</span>
+                <div class="mb-4 lead">The page you are looking for was not found.</div>
+                <a href="{%url 'home' %}" class="btn btn-link">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+    
+

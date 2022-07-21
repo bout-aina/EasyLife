@@ -1,0 +1,77 @@
+{% extends 'technicien/base.html' %}
+{% block title %}EasyLife | Offres{% endblock %}
+{% load static %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/offre_list.css' %}">
+
+{% endblock %}	
+	{% block content %} 
+	<form class="d-flex" method="POST" style="width: 570px;margin: auto;">
+		{% csrf_token %}
+		<input class="form-control me-sm-2" type="text" placeholder="Search by catégorie" name="search">
+		<a href="{%url 'welcome'%}"><button  class="btn" style="width: 100px;margin: 473px;right: -150px;" type="submit">Search </button></a>
+	  </form>
+	{% for offre in of %}
+	<div class="courses-container" >
+		<div class="course">
+			<div class="course-preview">
+				<h6>Catégorie</h6>
+				<h2>{{offre.categorie}}</h2>
+			
+				<br><br>
+				<h6>{{offre.date_pub}}</h6>
+			
+			</div>
+			<div class="course-info">
+				<h6>Description</h6>
+				<h4>{{offre.description}}</h4>
+				<a href="{%url 'Details' offre.id %}"><button  class="btn">For more informations</button></a>
+				
+			</div>
+		</div>
+	</div>
+	{% endfor %} 
+	
+	<!-- SOCIAL PANEL HTML -->
+	
+	
+	
+
+	<!-- <div class="card mb-3" style="max-width: 540px; margin:auto; margin-top:25px;">
+		<div style="padding:5px;">
+		
+		</div>
+	  </div>
+	  
+		  {% for offre in of %}
+		 <div class="card mb-3" style="max-width: 540px; margin:auto; margin-top:25px;">
+		<div class="row g-0">
+		  <div class="col-md-4">
+			<img
+			  src="{% static 'img/service-3.jpg' %}"
+			  alt="..."
+			  class="img-fluid"
+			/>
+		  </div>
+		  <div class="col-md-8">
+			<div class="card-body">
+			  <h5 class="card-title">{{offre.categorie}}</h5>
+			  <p class="card-text">
+				{{offre.description}}
+			  </p>
+			  <p class="card-text">
+				<small class="text-muted">{{offre.date_pub}}</small>
+			  </p>
+			  <div>
+				<a href="#"><button class="btn btn-secondary my-2 my-sm-0">details</button></a>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+		</div>
+	  </div>
+	  {% endfor %} -->
+   
+		  {%endblock%}
+		  

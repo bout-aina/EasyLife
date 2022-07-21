@@ -1,0 +1,72 @@
+{% extends '_admin/base.html' %}
+{% block title %}EasyLife | Techniciens{% endblock %}
+{% load static %}
+{% block stylesheet %}
+
+
+{% endblock %}	
+	{% block content %}  
+
+<hr>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <form class="d-flex" method="POST">
+                            {% csrf_token %}
+                            <input class="form-control me-sm-2" type="text" placeholder="Search By category ...." name="search">
+                            <button class="btn btn-secondary my-2 my-sm-0"  type="submit" style="background-color: blue ;">Search</button>
+                            
+                          </form>
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                
+               
+                                <th><span>ID</span></th>
+                                <th><span>Nom et Prenom</span></th>
+                                
+                                <th><span>Description</span></th>
+                                <th><span>Categorie</span></th>
+                                <th><span>Date de publication</span></th>
+                                
+                              
+                                <th><span>Delete</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                             {% for tecs in of %}  
+                                <tr>
+  <td>{{ tecs.id }}</td>  
+         <td>{{ tecs.client }}</td>  
+        
+         <td>{{ tecs.description }}</td>  
+         <td>{{ tecs.categorie }}</td>  
+         <td>{{ tecs.date_pub }}</td>  
+         
+                                   
+                                        <td>
+                                        <a href="/delete_offre/{{ tecs.id }}" class="table-link danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                  {% endfor %} 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+		  {%endblock%}
+		  
+		  
+		  

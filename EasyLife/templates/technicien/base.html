@@ -1,0 +1,93 @@
+{%if request.session.email%}
+
+   {% csrf_token %}
+   <!doctype html>
+   <html class="no-js" lang="">
+	{% load crispy_forms_tags %}
+
+    <head>
+        <meta charset="UTF-8">
+        {% load static %}
+        <title>
+            {% block title %} {% endblock %}
+        </title>
+ 
+        
+        {% block stylesheet %}{% endblock %}
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    </head>
+    
+    <nav class="navbar navbar-default" role="navigation"  style="background-color: rgb(51, 50, 50);">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" style="color: rgb(255, 255, 255);" href="#">EasyLife |</a>
+        </div>
+      
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+
+            <li><a  style="color: rgb(255, 255, 255);" href="{%url 'welcome'%}">Offres</a></li>
+            
+            <li><a style="color: rgb(255, 255, 255);" href="{%url 'postuler'%}">Postulation</a></li>
+           
+          </ul>
+         
+          <ul class="nav navbar-nav navbar-right" >
+            
+            <li class="dropdown" style="color: rgb(41, 40, 40);">
+              <a  style="background-color: rgb(51, 50, 50);color: white;" href="#" class="dropdown-toggle" data-toggle="dropdown">{{object.nom}} {{object.prenom}} <b style="background-color: rgb(41, 40, 40);" class="caret"></b></a>
+              <ul class="dropdown-menu" style="color: rgb(41, 40, 40);">
+                <li><a style="color: rgb(41, 40, 40);" href="{%url 'profile'%}" >Profile</a></li>
+                
+                
+                <li class="divider"></li>
+                <li><a style="color: rgb(41, 40, 40);" href="{%url 'home' %}">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>  
+  <body>
+        {% block content %}
+        {%endblock%}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block javascripts %}{% endblock %}
+  </body>
+  </html>
+{% else %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+{% load static %}
+
+<!------ Include the above in your HEAD tag ---------->
+<link href="{%static 'error.css'%}">
+<div class="page-wrap d-flex flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <br><br><br><br>
+                <span class="display-1 d-block">404</span>
+                <div class="mb-4 lead">The page you are looking for was not found.</div>
+                <a href="{%url 'home' %}" class="btn btn-link">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+    
+

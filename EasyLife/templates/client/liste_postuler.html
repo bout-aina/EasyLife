@@ -1,0 +1,38 @@
+{% extends 'client/base.html' %}
+{% block content %}
+{% if erreur %}
+    <div class="alert alert-danger" role="alert" style="margin-top:15px;">
+  personne n'a postuler pour votre offre
+</div>
+{% else %}
+    <div style="width:70%;margin:auto;margin-top:25px;">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">nom complet</th>
+                <th scope="col">ville</th>
+                <th scope="col">telephone</th>
+                <th scope="col">Email</th>
+                <th scope="col">domaine</th>
+                <th scope="col">diplome</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                {% for po in postuler %}
+                    <tr>
+                    <td>{{po.technicien}}</td>
+                    <td>{{po.technicien.ville}}</td>
+                    <td>0{{po.technicien.tel}}</td>
+                    <td>{{po.technicien.email}}</td>
+                    <td>{{po.technicien.domaine}}</td>
+                    <td>{{po.technicien.diplome}}</td>
+                    
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+{% endblock  %}

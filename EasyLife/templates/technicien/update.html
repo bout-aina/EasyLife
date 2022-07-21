@@ -1,0 +1,147 @@
+{% extends 'technicien/base.html' %}
+{% block title %}EasyLife | Update{% endblock %}
+{% load static %}
+  {% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+   {% endblock %}
+
+	
+    
+   {% block content %}
+   
+   <div class="container">
+    <div class="main-body">{%if messages%}
+							{% for msg in messages%}
+							<div class="alert alert-success" role="alert">
+								{{ msg }}
+							  </div>
+							{% endfor%}
+							{% endif%}
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card" style="background-color:#eee;">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>{{object.nom}}  {{object.prenom}}</h4>
+                      <p class="text-secondary mb-1">{{object.email}}</p>
+                      <p class="text-muted font-size-sm">Telephone :{{object.tel}} </p>
+                      <br><br>
+                      <a class="btn btn-primary"  href="{%url 'profile' %}">Retour profile</a> 
+                      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+              
+            <form method="POST" action="" >
+            {% csrf_token %}
+            <div class="col-md-8">
+              <div class="card mb-3" style="background-color:#eee;">
+                <div class="card-body">
+                  <div class="row">
+                      
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nom</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text"  name="nom" placeholder="Nom" value="{{object.nom}}" >
+                    </div>
+                  </div>
+                   <hr style="border-top: 1px solid black;">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Prénom</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" name="prenom" placeholder="Prénom" value="{{object.prenom}}" >
+                    </div>
+                  </div>
+                  
+                   <hr style="border-top: 1px solid black;">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="email" name="email" placeholder="Email" value="{{object.email}}" disabled="">
+                    </div>
+                  </div>
+                  
+                   <hr style="border-top: 1px solid black;">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Tel</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type ="tel"  name="tel" placeholder="Tel"  maxlength='10' value="{{object.tel}}">
+                    </div>
+                  </div>
+                   <hr style="border-top: 1px solid black;">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">CIN</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" name="cin" placeholder="CIN" value="{{object.cin}}" disabled="" >
+                    </div>
+                  </div>
+                  
+                   <hr style="border-top: 1px solid black;">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Mot de passe</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type ="password"  name="mdp" placeholder="Mot de passe" >
+                    </div>
+                  </div>
+                   <hr style="border-top: 1px solid black;">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Ville</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text"  name="ville" placeholder="Ville"  value="{{object.ville}}">
+                    </div>
+                  </div>
+                   <hr style="border-top: 1px solid black;">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Domaine</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" name="domaine" placeholder="Votre domaine?" value="{{object.domaine}}">
+                    </div>
+                  </div>
+                   <hr style="border-top: 1px solid black;">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Diplome</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text"  name="diplome" placeholder="Diplome" value="{{object.diplome}}" >
+                    </div>
+                  </div>
+                
+                  <hr style="border-top: 1px solid black;">
+                  <input type="submit" class="btn btn-primary"  href="{%url 'update' %}" value = "Modifier profile ">
+                </div>
+              </div>
+              
+               
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+    </div>
+   
+
+
+   {%endblock%}
